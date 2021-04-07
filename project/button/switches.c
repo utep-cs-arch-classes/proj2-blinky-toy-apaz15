@@ -30,6 +30,14 @@ switch_interrupt_handler()
 {
   char p1val = switch_update_interrupt_sense();
   switch_state_down = (p1val & SW1) ? 0 : 1; /* 0 when SW1 is up */
-  switch_state_changed = 1;
-  led_update();
+
+  if(switch_state_down){\
+    red_on = 1;
+    green_on = 1;
+  } else {
+    red_on = 0;
+    green_on = 0;
+  }
+   switch_state_changed = 1;
+   led_update();
 }
